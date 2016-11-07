@@ -10,7 +10,7 @@ DeerResume
 - 支持本地设置阅读密码功能。
 - 新增简历页面置顶功能。
 
-[本地简历示例](http://www.deercv.com)。
+[此项目示例](http://resumedemo.wiliam.me/)。
 初始密码:12345
 
 最好用的MarkDown在线简历工具，可在线预览、编辑、设置访问密码和生成PDF
@@ -83,4 +83,4 @@ public class GenJson {
 ![][2]
 
 [1]:http://ofv7c2awe.bkt.clouddn.com/mima.jpg
-[2]:http://ofv7c2awe.bkt.clouddn.com/DeerResume.jpg
+[2]:http://ofv7c2awe.bkt.clouddn.com/DeerResumeSimple.jpg
