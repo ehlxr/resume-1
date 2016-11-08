@@ -1,4 +1,4 @@
-var deerResume = angular.module('deerResume', ['ngRoute', 'wiz.markdown', 'ngNotify', 'angularLocalStorage']);
+var deerResume = angular.module('deerResume', ['ngRoute', 'wiz.markdown', 'ngNotify', 'angularLocalStorage', 'angular-md5']);
 
 //var baseurl = 'http://cvbox.sinaapp.com/'; // 使用SAE托管简历数据
 //var baseurl = 'data.php'; // 使用本地文件托管简历数据，本地模式下，不支持在线编辑
@@ -18,7 +18,7 @@ deerResume.config(['$routeProvider',
         });
     }]);
 
-deerResume.controller('resumeCtrl', function ($scope, $rootScope, $http, storage) {
+deerResume.controller('resumeCtrl', function ($scope, $rootScope, $http, storage, md5) {
     storage.bind($scope, 'vpass');
     $http.get(pwdurl).success(function (pwdObj) {debugger
         $scope.resume = pwdObj;
@@ -37,7 +37,7 @@ deerResume.controller('resumeCtrl', function ($scope, $rootScope, $http, storage
     });
 
     $scope.password = function (vpass) {debugger
-        $scope.vpass = vpass;
+        $scope.vpass = md5.createHash(vpass);
         window.location.reload();
     }
 });
