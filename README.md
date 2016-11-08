@@ -54,7 +54,7 @@ DeerResume
 **注意**
 这里复制自己的markdown简历到`data.json`中的`content`字段时要注意简历中的换行符。需要替换成\r\n在一行显示才可以。
 这里我是自己写java代码替换的，需要使用的有`json-lib`包和apache的`common-io`包，代码如下：
-{% codeblock lang:java 制作json代码 %} 
+```
 import java.io.File;
 import java.io.IOException;
 import org.apache.commons.io.FileUtils;
@@ -79,10 +79,10 @@ public class GenJson {
 	}
 	
 }      
-{% endcodeblock %}
+```
 
 maven构建项目的pom.xml的依赖如下：
-{% codeblock lang:xml 制作json代码pom依赖 %} 
+```
 <dependency>
 	<groupId>net.sf.json-lib</groupId>
 	<artifactId>json-lib</artifactId>
@@ -96,7 +96,7 @@ maven构建项目的pom.xml的依赖如下：
 	<version>2.4</version>
 </dependency>
 
-{% endcodeblock %}
+```
 
 示例截图：
 ![][1]
