@@ -1,9 +1,10 @@
 DeerResume
 ==========
 
-
 ![img](http://www.jobdeer.com/img/rd.png)
 > [DeerResume][3]项目介绍了如何用markdown制作个人在线简历。不过其中的数据不是存储到本地的，个人感觉不太放心，所以把他的源码clone下来，自己修改了下，可以将数据存储到本地。有需要的同学可以看下。
+
+<!--more-->
 
 # 1.DeerResume简要介绍
 下面是[DeerResume][3]官方GitHub的介绍，只是摘抄过来。
@@ -28,7 +29,7 @@ DeerResume
 - 新增简历页面置顶功能。
 
 暂不支持的功能
--不能在线MarkDown编辑器+实时预览
+- 不能在线MarkDown编辑器+实时预览
 
 
 [此项目示例](http://resumedemo.wiliam.me/)。
@@ -112,5 +113,5 @@ maven构建项目的pom.xml的依赖如下：
 ![][2]
 
 [1]:http://ofv7c2awe.bkt.clouddn.com/mima.jpg
-[2]:http://ofv7c2awe.bkt.clouddn.com/DeerResume.jpg
+[2]:http://ofv7c2awe.bkt.clouddn.com/DeerResumeSimple.jpg
 [3]:https://github.com/geekcompany/DeerResume
