@@ -10,8 +10,8 @@ DeerResume
 - 支持本地设置阅读密码功能。
 - 新增简历页面置顶功能。
 
-[本地简历示例](http://www.deercv.com)。
-初始密码:12345
+~~[本地简历示例](http://www.deercv.com)。
+初始密码:12345~~
 
 最好用的MarkDown在线简历工具，可在线预览、编辑、设置访问密码和生成PDF
 
@@ -30,7 +30,7 @@ DeerResume
 ### FAQ
 
 如何修改访问密码？
-- pwd.json中vpass字段存储的是访问密码
+- pwd.json中vpass字段存储的是访问密码（**MD5加密**）
 
 修改访问密码后密码不好使?
 - 修改js/app.js文件的第6行
@@ -44,8 +44,8 @@ DeerResume
 ```
 将后面的版本号随便修改一个数字
 
-如何在显示输入密码的时候显示首页的标题和子标题
-- 将data.json、err.json和pwd.json中的title字段和subtitle字段都写值即可。
+~~如何在显示输入密码的时候显示首页的标题和子标题~~
+- ~~将data.json、err.json和pwd.json中的title字段和subtitle字段都写值即可。~~
 
 如何编写自己的在线简历
 - 自己编写完自己的markdown简历后，将内容复制到data.json中的content字段即可。
