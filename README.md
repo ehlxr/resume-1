@@ -1,18 +1,12 @@
 DeerResume
 ==========
 
+
 ![img](http://www.jobdeer.com/img/rd.png)
+> [DeerResume][3]项目介绍了如何用markdown制作个人在线简历。不过其中的数据不是存储到本地的，个人感觉不太放心，所以把他的源码clone下来，自己修改了下，可以将数据存储到本地。有需要的同学可以看下。
 
-> 修改了DeerResume在线简历工具按照自己的需要定制。
-
-主要修改如下：
-- 可以将简历数据存储到本地。
-- 支持本地设置阅读密码功能。
-- 新增简历页面置顶功能。
-
-[此项目示例](http://resumedemo.wiliam.me/)。
-初始密码:12345
-
+# 1.DeerResume简要介绍
+下面是[DeerResume][3]官方GitHub的介绍，只是摘抄过来。
 最好用的MarkDown在线简历工具，可在线预览、编辑、设置访问密码和生成PDF
 
   - 可自行搭建，任意修改页面样式和风格
@@ -21,8 +15,25 @@ DeerResume
   - 在浏览器中实时保存草稿
   - 支持阅读密码，您可以直接将网址和密码发送，供招聘方在线浏览
   - 一键生成简单雅致的PDF，供邮件发送及打印
-  
-原项目地址：https://github.com/geekcompany/DeerResume
+
+ 点击访问[原项目地址][3]
+
+
+# 2.个人修改
+[DeerResume][3]是在线简历制作工具，只要了解markdown语法就可以写出自己的个性化简历。不过按照[DeerResume][3]介绍的“如何在没有云端的情况下使用DeerResume？”方法并未好使，主要是用到后台PHP请求了，但并没有PHP服务器支持，所以就不好使了。然后我把代码clone下来，研究了一下，对其中有写修改。
+
+主要修改如下：
+- 可以将简历数据存储到本地。
+- 支持本地设置阅读密码功能。
+- 新增简历页面置顶功能。
+
+暂不支持的功能
+-不能在线MarkDown编辑器+实时预览
+
+
+[此项目示例](http://resumedemo.wiliam.me/)。
+初始密码:12345
+
 
 
 
@@ -33,6 +44,7 @@ DeerResume
 - pwd.json中vpass字段存储的是访问密码
 
 修改访问密码后密码不好使?
+此问题主要是浏览器的缓存在作怪
 - 修改js/app.js文件的第6行
 ```
  var pwdurl = 'pwd.json?v=1.0.0';
@@ -42,15 +54,15 @@ DeerResume
 ```
   <script src="js/app.js?v=1.0.0"></script>
 ```
-将后面的版本号随便修改一个数字
+将后面的版本号随便修改一个数字，这时再刷新下浏览器就好使了。
 
 如何在显示输入密码的时候显示首页的标题和子标题
 - 将data.json、err.json和pwd.json中的title字段和subtitle字段都写值即可。
 
 如何编写自己的在线简历
-- 自己编写完自己的markdown简历后，将内容复制到data.json中的content字段即可。
+- 编写完自己的markdown简历后，将内容复制到data.json中的content字段即可。
 
-
+**注意**
 这里复制自己的markdown简历到data.json中的content字段时要注意简历中的换行符。需要替换成\r\n在一行显示才可以。
 这里我是自己写java代码替换的，需要使用的有json-lib包和apache的common-io包，代码如下：
 ```
@@ -78,9 +90,27 @@ public class GenJson {
 	
 }
 ```
+maven构建项目的pom.xml的依赖如下：
+```
+<dependency>
+	<groupId>net.sf.json-lib</groupId>
+	<artifactId>json-lib</artifactId>
+	<version>2.4</version>
+	<classifier>jdk15</classifier><!--指定jdk版本-->  
+</dependency>
+		
+<dependency>
+	<groupId>commons-io</groupId>
+	<artifactId>commons-io</artifactId>
+	<version>2.4</version>
+</dependency>
+
+```
+
 示例截图：
 ![][1]
 ![][2]
 
 [1]:http://ofv7c2awe.bkt.clouddn.com/mima.jpg
-[2]:http://ofv7c2awe.bkt.clouddn.com/DeerResumeSimple.jpg
+[2]:http://ofv7c2awe.bkt.clouddn.com/DeerResume.jpg
+[3]:https://github.com/geekcompany/DeerResume
