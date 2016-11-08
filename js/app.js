@@ -18,49 +18,34 @@ deerResume.config(['$routeProvider',
         });
     }]);
 
-deerResume.controller('resumeCtrl', function ($scope, $http, storage) {
+deerResume.controller('resumeCtrl', function ($scope, $rootScope, $http, storage) {
     storage.bind($scope, 'vpass');
-
-    $http.get(pwdurl).success(function (pwdObj) {
+    $http.get(pwdurl).success(function (pwdObj) {debugger
         $scope.resume = pwdObj;
         if (pwdObj != null && pwdObj.vpass != null) {
 
             if (pwdObj.vpass == $scope.vpass) {
                 $http.get(baseurl).success(function (data) {
-                    // $scope.resume = data;
                     $scope.resume.content = data.content;
                     $scope.resume.show = data.show;
                 });
             }
             $scope.vpass = "";
         }
+
+        $rootScope.resume = $scope.resume;
     });
 
-    $scope.password = function (vpass) {
+    $scope.password = function (vpass) {debugger
         $scope.vpass = vpass;
         window.location.reload();
     }
 });
 
-deerResume.controller('adminCtrl', function ($scope, $http, storage, ngNotify) {
-    storage.bind($scope, 'wpass');
-    storage.bind($scope, 'vpass');
-    storage.bind($scope, 'apass');
-    storage.bind($scope, 'resume.content');
-
-    var url = '';
-    if ($scope.vpass && $scope.vpass.length > 3)
-        url = baseurl + "?a=show&domain=" + encodeURIComponent(window.location) + "&vpass=" + encodeURIComponent($scope.vpass);
-    else
-        url = baseurl + "?a=show&domain=" + encodeURIComponent(window.location);
-
-    $http.get(url).success(function (data) {
-        var oldcontent = $scope.resume.content;
-        $scope.resume = data;
-        $scope.resume.admin_password = $scope.apass;
-        $scope.resume.view_password = $scope.wpass;
-        if (oldcontent.length > 0) $scope.resume.content = oldcontent;
-    });
+deerResume.controller('adminCtrl', function ($scope, $rootScope, $http, ngNotify) {
+    if ($.trim($rootScope.resume) && $rootScope.resume.show == '1') {
+        $scope.resume = $rootScope.resume;
+    } 
 
     $scope.save = function (item) {
         $http
